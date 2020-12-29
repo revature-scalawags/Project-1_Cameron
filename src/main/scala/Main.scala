@@ -1,4 +1,6 @@
-object Main extends App {
+import com.typesafe.scalalogging.LazyLogging
+object Main extends App with LazyLogging {
+  logger.info("New program run start")
   var userInput = ""
   println(
     "\nWelcome, the following options below are avilable to you:\n" +
@@ -11,13 +13,53 @@ object Main extends App {
   while (userInput != "exit") {
     println("Please enter a command: ")
     userInput = scala.io.StdIn.readLine()
+    logger.info(s"user input registered: '$userInput'.")
     userInput match {
-      case "pull"  => println("###PLACEHOLDER###: TODO: implement 'pull'")
-      case "write" => println("###PLACEHOLDER###: TODO: implement 'write'")
-      case "list"  => println("###PLACEHOLDER###: TODO: implement 'list'")
-      case "query" => println("###PLACEHOLDER###: TODO: implement 'query'")
+      case "pull"  => pull()
+      case "write" => write()
+      case "list"  => list()
+      case "query" => query()
       case "exit"  => println("Exiting Program...")
-      case _       => println("Input not recognized, please try a different input.")
+      case _       => {
+        logger.error(s"Invalid input entered: '$userInput'.")
+        println("Input not recognized.")
     }
+    }
+  }
+
+  /** pull
+	* Pulls data from the website source.
+	*/
+  def pull() {
+    logger.info("running 'pull' function.")
+
+    logger.info("'pull' function complete.")
+  }
+
+  /** write
+	* Writes the data to the hadoop cluster
+	*/
+  def write() {
+    logger.info("running 'write' function.")
+
+    logger.info("'write' function complete.")
+  }
+
+  /** list
+	* Lists all of the entries in the hadoop database in the CLI
+	*/
+  def list() {
+    logger.info("running 'list' function.")
+    
+    logger.info("'list' function complete.")
+  }
+
+  /** query
+	* Queries the database using arguements parsed from the CLI
+	*/
+  def query() {
+    logger.info("running 'query' function.")
+
+    logger.info("'query' function complete.")
   }
 }
