@@ -53,3 +53,13 @@ project/plugins/project/
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/vscode,apachehadoop,scala,sbt,metals
+src/res/colors.csv
+src/res/downloads_schema.png
+src/res/inventories.csv
+src/res/inventory_parts.csv
+src/res/inventory_sets.csv
+src/res/part_categories.csv
+src/res/parts.csv
+src/res/sets.csv
+src/res/themes.csv
+src/res/archive.zip

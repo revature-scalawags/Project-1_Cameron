@@ -30,4 +30,11 @@ Scala-Hadoop application to answer interesting questions about large datasets, u
   - https://wikitech.wikimedia.org/wiki/Analytics/Data_Lake/Edits/Mediawiki_history_dumps#Technical_Documentation
 - [Monthly Clickstream](https://dumps.wikimedia.org/other/clickstream/readme.html)
   - https://meta.wikimedia.org/wiki/Research:Wikipedia_clickstream
+
+## Initializing the Hadoop-Hive docker
+1. cd ~
+2. cd docker-hive/
+3. docker-compose up -d
+4. docker-compose exec hive-server bash
+5. /opt/hive/bin/beeline -u jdbc:hive2://localhost:10000
   

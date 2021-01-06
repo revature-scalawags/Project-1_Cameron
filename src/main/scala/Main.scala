@@ -1,7 +1,30 @@
 import com.typesafe.scalalogging.LazyLogging
+import java.sql._
+
 object Main extends App with LazyLogging {
   logger.info("New program run start")
   var userInput = ""
+  var con:Connection = null
+
+  try {
+    val connectionString = "jdbc:hive2://localhost:10000/default"
+    Class.forName("org.apache.hive.jdbc.HiveDriver")
+    con = DriverManager.getConnection(connectionString, "", "")
+
+    val statement = con.createStatement()
+    var resultSet = statement.executeQuery("PLACEHOLDER") //TODO: SQL Query execution here
+    
+    while (resultSet.next) {
+      //This loop iterates each row of the resultSet until there are no more
+      //val foo = resultSet.getString("foo")
+      //val bar = resultSet.getString("bar")
+      //println(foo + " " + bar)
+    }
+  } catch {
+    case e: Exception => e.printStackTrace()
+  }
+  con.close()
+
   println(
     "\nWelcome, the following options below are avilable to you:\n" +
       "\tpull:\tPulls the data from the website source.\n" +
@@ -20,16 +43,16 @@ object Main extends App with LazyLogging {
       case "list"  => list()
       case "query" => query()
       case "exit"  => println("Exiting Program...")
-      case _       => {
+      case _ => {
         logger.error(s"Invalid input entered: '$userInput'.")
         println("Input not recognized.")
-    }
+      }
     }
   }
 
   /** pull
-	* Pulls data from the website source.
-	*/
+    * Pulls data from the website source.
+    */
   def pull() {
     logger.info("running 'pull' function.")
 
@@ -37,8 +60,8 @@ object Main extends App with LazyLogging {
   }
 
   /** write
-	* Writes the data to the hadoop cluster
-	*/
+    * Writes the data to the hadoop cluster
+    */
   def write() {
     logger.info("running 'write' function.")
 
@@ -46,17 +69,17 @@ object Main extends App with LazyLogging {
   }
 
   /** list
-	* Lists all of the entries in the hadoop database in the CLI
-	*/
+    * Lists all of the entries in the hadoop database in the CLI
+    */
   def list() {
     logger.info("running 'list' function.")
-    
+
     logger.info("'list' function complete.")
   }
 
   /** query
-	* Queries the database using arguements parsed from the CLI
-	*/
+    * Queries the database using arguements parsed from the CLI
+    */
   def query() {
     logger.info("running 'query' function.")
 
