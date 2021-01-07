@@ -2,17 +2,15 @@
 Scala-Hadoop application to answer interesting questions about large datasets, using Hive or MapReduce.
 
 ## Examples
-1. Which English wikipedia article got the most traffic on October 20?
-2. What English wikipedia article has the largest fraction of its readers follow an internal link to another wikipedia article?
-3. What series of wikipedia articles, starting with [Hotel California](https://en.wikipedia.org/wiki/Hotel_California), keeps the largest fraction of its readers clicking on internal links?  This is similar to (2), but you should continue the analysis past the first article.
-4. Find an example of an English wikipedia article that is relatively more popular in the UK.  Find the same for the US and Australia.
-5. Analyze how many users will see the average vandalized wikipedia page before the offending edit is reversed.
-6. Run an analysis you find interesting on a reasonable dataset.
+1. Which color of lego brick is used most across all sets?
+2. What are the top 10 parts used as spares for all sets?
+3. What sets had the highest part numbers included in the year 2017? 
 
-## Presentations
-- Simple slide deck of results, high level overview of the process used to achieve those results, and any assumptions and simplifications made.
-- 5-10 demonstration
-- Friday, 1/8
+**optional**
+
+4. What category of parts utilizes the highest number of unique parts?
+5. How many sets include 'brick' in the name of the set?
+6. How many 'Sloped Bricks' are included in all 'Star Wars' sets?
 
 ## Technologies
 - Hadoop MapReduce
@@ -22,19 +20,15 @@ Scala-Hadoop application to answer interesting questions about large datasets, u
 - Hive
 - Git + GitHub
 
-## Example datasets
-- [All Analytics](https://dumps.wikimedia.org/other/analytics/)
-- [Pageviews Filtered to Human Traffic](https://dumps.wikimedia.org/other/pageviews/readme.html)
-  - https://wikitech.wikimedia.org/wiki/Analytics/Data_Lake/Traffic/Pageviews
-- [Page Revision and User History](https://dumps.wikimedia.org/other/mediawiki_history/readme.html)
-  - https://wikitech.wikimedia.org/wiki/Analytics/Data_Lake/Edits/Mediawiki_history_dumps#Technical_Documentation
-- [Monthly Clickstream](https://dumps.wikimedia.org/other/clickstream/readme.html)
-  - https://meta.wikimedia.org/wiki/Research:Wikipedia_clickstream
+## Dataset
+- https://www.kaggle.com/rtatman/lego-database
 
 ## Initializing the Hadoop-Hive docker
 1. cd ~
 2. cd docker-hive/
 3. docker-compose up -d
+
+### Entering hive for direct query entry
 4. docker-compose exec hive-server bash
-5. /opt/hive/bin/beeline -u jdbc:hive2://localhost:10000
+5. {in hive} > hive
   
